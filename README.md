@@ -16,7 +16,7 @@ download portablepy.ps1 in a folder and run it. By default portablepy.ps1 will s
 ```.\portablepy.ps1 -source "https://www.python.org/ftp/python/3.9.10/python-3.9.10-embed-amd64.zip" -destination "C:\SomeDir\PortablePython\"```
 
 
-*) Path to a directory should always end with back space "\"
+*) Path to a directory should always end with back space
 
 You can find the list of Python's Binary packages for Windows here: https://www.python.org/downloads/windows/
 Select the **Windows embeddable package** from the list.
