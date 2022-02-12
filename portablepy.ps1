@@ -1,24 +1,26 @@
-###################################################################################
-# CONFIGURATION
-###################################################################################
-# URL of the PYTHON embeddable package distribution (zip)
-$source = 'https://www.python.org/ftp/python/3.9.10/python-3.9.10-embed-amd64.zip'
+param ($source, $destination, $pythonVersion)
 
-# STRING version of the python you want to setup.
-#  python 3.8 = python38
-#  python 3.9 = python39
-#  ect.
-$pythonVersion = "python39";
+if (!$source) {
+    $source = 'https://www.python.org/ftp/python/3.9.10/python-3.9.10-embed-amd64.zip'
+}
+
+if (!$pythonVersion) {
+    $source -match '.+\/python-(\d+)\.(\d+)\..+'
+    $Matches
+    $pythonVersion = "python$($Matches[1])$($Matches[2])"
+}
+
+if (!$destination) {
+    $destination = '.\'
+}
 
 
-###################################################################################
-# NOTHING TO CHANGE HERE
-###################################################################################
-"You're installing $($pythonVersion)"
+"You're installing $($pythonVersion) into $($destination)"
+
 
 # Destination to save the file
-$package = '.\embedpython.zip'
-$destination = '.\'
+$package = "$($destination)embedpython.zip"
+
 #Download the file
 "Downloading package from $($source)"
 Invoke-WebRequest -Uri $source -OutFile $package
