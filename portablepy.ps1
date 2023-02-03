@@ -14,6 +14,9 @@ if (!$destination) {
     $destination = '.\'
 }
 
+# Fixes an error if the user doesn't put a backslash at the end of the url
+$destination += "\"
+
 
 "You're installing $($pythonVersion) into $($destination)"
 
